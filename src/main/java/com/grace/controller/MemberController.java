@@ -22,17 +22,16 @@ public class MemberController {
     @RequestMapping("")
     public String index(Model model){
 
-/*        Object obj =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object obj =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (obj instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) obj;
-            System.out.println(userDetails.getUsername());
-            System.out.println(userDetails.getPassword());
-            System.out.println(userDetails.getAuthorities());
+            model.addAttribute("username",userDetails.getUsername());
+            model.addAttribute("authorities",userDetails.getAuthorities());
         }
         if (obj instanceof Principal) {
             Principal principal = (Principal) obj;
             System.out.println(principal.getName());
-        }*/
+        }
         return "/member/index";
     }
 }
