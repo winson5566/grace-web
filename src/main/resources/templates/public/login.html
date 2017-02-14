@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>登录页面</title>
+</head>
+<body>
+
+<h1>Login page</h1>
+<p th:if="${loginError}" class="error">Wrong user or password</p>
+<form th:action="@{/doLogin}" method="post">
+    <label for="username">Username</label>:
+    <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+    <label for="password">Password</label>:
+    <input type="password" id="password" name="password" /> <br />
+    <input type="submit" value="Log in" />
+</form>
+<!--
+登录页面
+<form action="/doLogin" method="post">
+    <p>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"/>
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"/>
+    </p>
+    <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <button type="submit" class="btn">Log in</button>
+</form>-->
+<a href="/signup">注册</a>
+<a href="/">返回首页</a>
+</body>
+</html>

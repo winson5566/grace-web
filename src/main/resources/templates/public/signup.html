@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>注册页面</title>
+</head>
+<body>
+<form value="/doSignup" var="signupUrl"/>
+<p>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username"/>
+</p>
+<p>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password"/>
+</p>
+<input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<button type="submit" class="btn">Sign Up</button>
+</form>
+<a href="/login">登录</a>
+<a href="/">返回首页</a>
+</body>
+</html>

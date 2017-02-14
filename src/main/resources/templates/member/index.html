@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>会员页面</title>
+</head>
+<body>
+<a href="/">返回首页</a>
+<span th:text="${#authentication.name}">Jack</span>的首页
+<div th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+    <a href="/admin">管理员入口</a>
+</div>
+<form action="/logoutUrl" method="post">
+    <input type="submit" value="Log out"/>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
+</body>
+</html>

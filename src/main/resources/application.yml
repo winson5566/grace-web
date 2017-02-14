@@ -1,0 +1,43 @@
+# Server settings
+server:
+  port: 8080
+
+#默认使用dev配置
+#java -jar xxx.jar --spring.profiles.active=test
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    prefix: classpath:/templates/
+
+
+---
+# 开发环境配置
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/ed
+    username: root
+    password: w5566
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    tomcat:
+      max-wait: 10000
+      max-active: 100
+      test-on-borrow: true
+
+---
+# 测试环境配置
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/ed
+    username: root
+    password: w5566
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    tomcat:
+      max-wait: 10000
+      max-active: 500
+      test-on-borrow: true
+# Server settings
+server:
+  port: 80
