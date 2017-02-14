@@ -6,8 +6,8 @@
 </head>
 <body>
 <a href="/">返回首页</a>
-<div th:text="${username}">Jack</div>的首页
-<div th:if="${authorities} == 'ADMIN'">
+<div th:text="${#authentication.name}">Jack</div>的首页
+<div th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
     <a href="/admin">管理员入口</a>
 </div>
 <form action="/logoutUrl" method="post">

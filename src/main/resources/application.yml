@@ -7,14 +7,15 @@ server:
 spring:
   profiles:
     active: dev
-  thymeleaf:
-    prefix: classpath:/templates/
+
 
 
 ---
 # 开发环境配置
 spring:
   profiles: dev
+  thymeleaf:
+    prefix: classpath:/templates/
   datasource:
     url: jdbc:mysql://localhost:3306/ed?serverTimezone=UTC
     username: root
@@ -29,8 +30,10 @@ spring:
 # 测试环境配置
 spring:
   profiles: test
+  thymeleaf:
+    prefix: classpath:/templates/
   datasource:
-    url: jdbc:mysql://localhost:3306/ed?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ed
     username: root
     password: w5566
     driver-class-name: com.mysql.cj.jdbc.Driver

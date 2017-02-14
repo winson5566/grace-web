@@ -2,17 +2,11 @@ package com.grace.config;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
-import org.thymeleaf.spring4.SpringTemplateEngine;
 
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by winson on 17-2-14.
@@ -59,14 +53,5 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                                 "LEFT JOIN users u on u.id = a.user_id " +
                                 "where u.username = ?;");
     }
-
-/*    @Bean(name="templateEngine")
-    public SpringTemplateEngine templateEngine(){
-        SpringTemplateEngine engine = new SpringTemplateEngine();
-        Set set = new HashSet();
-        set.add(new SpringSecurityDialect());
-        engine.setAdditionalDialects(set);
-        return engine;
-    }*/
 
 }
