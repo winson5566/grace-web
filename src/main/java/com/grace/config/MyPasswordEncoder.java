@@ -15,10 +15,6 @@ public class MyPasswordEncoder extends MessageDigestPasswordEncoder {
         super(algorithm);
     }
 
-    public MyPasswordEncoder(String algorithm, boolean encodeHashAsBase64) throws IllegalArgumentException {
-        super(algorithm, encodeHashAsBase64);
-    }
-
     @Override
     public boolean isPasswordValid(String savePass, String submitPass, Object salt) {
         return savePass.equals(new Md5PasswordEncoder().encodePassword(submitPass, salt.toString()));

@@ -31,7 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService).passwordEncoder(new MyPasswordEncoder("md5",true));
+        auth.userDetailsService(myUserDetailsService).passwordEncoder(new MyPasswordEncoder("md5"));
     }
 
     @Override
