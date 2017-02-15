@@ -1,13 +1,16 @@
 package com.grace.valid;
 
+
 import javax.validation.constraints.Size;
 
 /**
  * Created by winson on 2016/12/10.
  */
-public class RegisterValid {
+public class SignupValid {
+
     @Size(min = 4,max = 11,message = "用户名格式不正确!")
     private String username;
+
     @Size(min = 4,max = 30,message = "密码最少4位!")
     private String password;
 

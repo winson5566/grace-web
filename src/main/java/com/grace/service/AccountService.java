@@ -1,5 +1,7 @@
 package com.grace.service;
 
+import com.grace.valid.SignupValid;
+
 import java.util.Map;
 
 /**
@@ -9,9 +11,7 @@ public interface AccountService {
 
     /**
      * 账户注册
-     * @param username
-     * @param password
      * @return
      */
-    Map<String,Object> doSignup(String username,String password);
+    Map<String,Object> doSignup(SignupValid signupValid);
 }

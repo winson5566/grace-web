@@ -5,13 +5,19 @@ package com.grace.controller;
  */
 
 import com.grace.service.AccountService;
+import com.grace.valid.SignupValid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.xml.ws.Action;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -19,6 +25,7 @@ public class PublicController {
 
     @Autowired
     private AccountService accountService;
+
 
     /**
      * 首页
@@ -47,7 +54,7 @@ public class PublicController {
      */
     @RequestMapping("login-error")
     public String loginError(Model model){
-        model.addAttribute("loginError", true);
+        model.addAttribute("loginError", "账号或密码错误");
         return "/public/login";
     }
 
@@ -65,14 +72,23 @@ public class PublicController {
     /**
      * 执行注册
      * @param model
-     * @param username
-     * @param password
      * @return
      */
     @RequestMapping("doSignup")
-    @ResponseBody
-    public Map<String,Object> signup(Model model, String username, String password){
-        return accountService.doSignup(username,password);
+    public String signup(Model model, @Validated SignupValid signupValid, BindingResult bindingResult){
+        System.out.print("123");
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            model.addAttribute("allErrors", errors);
+            return ("/public/signup");
+        }
+        Map<String,Object> map = accountService.doSignup(signupValid);
+        if ("0".equals(map.get("code"))){
+            model.addAttribute("error", map.get("msg"));
+            return ("/public/signup");
+        }
+        return ("redirect:/m");
+
     }
 
 }

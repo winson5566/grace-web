@@ -17,6 +17,7 @@ public class Users {
     private String username;
     private String password;
     private Integer enabled;
+    private String salt;
 
     public BigInteger getId() {
         return id;
@@ -48,5 +49,13 @@ public class Users {
 
     public void setEnabled(Integer enabled) {
         this.enabled = enabled;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }
