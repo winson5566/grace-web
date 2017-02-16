@@ -6,12 +6,15 @@ import com.grace.repository.GroupMembersRepository;
 import com.grace.repository.UsersRepository;
 import com.grace.valid.SignupValid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by winson on 13/02/2017.
@@ -37,7 +40,7 @@ public class AccountServiceImpl implements AccountService{
         }
         Users user = new Users();
         user.setUsername(signupValid.getUsername());
-        user.setPassword(signupValid.getPassword());
+        user.setPassword(BCrypt.hashpw(signupValid.getPassword(),BCrypt.gensalt()));
         user.setEnabled(1);
         Users users = usersRepository.save(user);
         if (users!=null){
