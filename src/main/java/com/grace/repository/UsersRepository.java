@@ -14,5 +14,4 @@ public interface UsersRepository extends JpaRepository<Users, BigInteger> {
 
     Long countByUsername(String username);
 
-    Users findByUsername(String username);
 }

@@ -1,3 +1,7 @@
+test:
+  key: key6655
+  value: value5566
+
 # Server settings
 server:
   port: 8080
@@ -9,12 +13,13 @@ spring:
     active: dev
   thymeleaf:
     prefix: classpath:/templates/
+
 ---
 # 开发环境配置
 spring:
   profiles: dev
   datasource:
-    url: jdbc:mysql://localhost:3306/ed?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ed?serverTimezone=UTC&useSSL=true
     username: root
     password: w5566
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -28,7 +33,7 @@ spring:
 spring:
   profiles: test
   datasource:
-    url: jdbc:mysql://localhost:3306/ed
+    url: jdbc:mysql://localhost:3306/ed?serverTimezone=UTC&useSSL=true
     username: root
     password: w5566
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -2,7 +2,9 @@ package com.grace;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -20,6 +22,14 @@ public class WebApplicationTests {
 		String pass1 = BCrypt.hashpw("w5566",salt);
 		System.out.println(pass0);
 		System.out.println(pass1);
+	}
+
+	@Autowired
+	private Environment env;
+
+	@Test
+	public void propTest(){
+
 	}
 
 }
